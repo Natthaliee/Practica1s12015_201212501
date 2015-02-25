@@ -1,19 +1,12 @@
 package plantsvszombies;
 
-import java.awt.Desktop;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -75,12 +68,72 @@ public class Reporte {
         }
 
     }
+    
+    public void generaTxt2() {
+        try {
+            fichero = dir + "\\src\\doc\\texto2.txt";
+            File outFile = new File(fichero);
 
-    public void generaGrafica() {
+            vaciarFichero(fichero);
+            texto = "";
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
+
+            texto += "digraph g{ graph[rankdir=LR];node[fontsize = 16 shape = ellipse];edge[];node0[label=Plantas shape = record];";
+            if (Planta.aNombre.size()>0 && Planta.aAtaque.size()>0&& Planta.asAtaque.size()>0) {
+                for (int i = 0; i < Planta.aNombre.size(); i++) {
+                    texto += "node"+(i+1)+"[ label = \"Planta"+(i+1)+"|" + Planta.aNombre.get(i) + "|" + Planta.aAtaque.get(i) + "|" + Planta.asAtaque.get(i) + "\"shape=record];";
+                    texto += "node0 -> node"+(i+1)+";  ";
+                }
+            } 
+
+            texto += "}";
+
+            writer.write(texto);
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            System.err.println(e);
+            System.exit(1);
+        }
+
+    }
+
+    public void generaTxt3() {
+        try {
+            fichero = dir + "\\src\\doc\\texto3.txt";
+            File outFile = new File(fichero);
+
+            vaciarFichero(fichero);
+            texto = "";
+
+           BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
+
+            texto += "digraph g{ graph[rankdir=LR];node[fontsize = 16 shape = ellipse];edge[];node0[label=Plantas shape = record];";
+            if (Zombie.aZNombre.size()>0 && Zombie.aZAtaque.size()>0&& Zombie.asZAtaque.size()>0) {
+                for (int i = 0; i < Zombie.aZNombre.size(); i++) {
+                    texto += "node"+(i+1)+"[ label = \"Planta"+(i+1)+"|" + Zombie.aZNombre.get(i) + "|" + Zombie.aZAtaque.get(i) + "|" + Zombie.asZAtaque.get(i) + "\"shape=record];";
+                    texto += "node0 -> node"+(i+1)+";  ";
+                }
+            } 
+
+            texto += "}";
+
+            writer.write(texto);
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            System.err.println(e);
+            System.exit(1);
+        }
+
+    }
+    
+    public void generaGrafica(String txt, String nombre) {
         try {
             String dotPath = "c:\\Program Files\\Graphviz2.38\\bin\\dot.exe";
-            String fileInputPath = dir + "\\src\\doc\\texto1.txt";
-            String fileOutputPath = dir + "\\src\\doc\\grafica1.png";
+            String fileInputPath = dir + txt;
+            String fileOutputPath = dir + nombre;
             String tParam = "-Tpng";
             String tOParam = "-o";
 
@@ -95,7 +148,7 @@ public class Reporte {
 
             rt.exec(cmd);
             
-            Runtime.getRuntime().exec("cmd /c start " + dir + "\\src\\doc\\grafica1.png");
+            Runtime.getRuntime().exec("cmd /c start " + dir + nombre);
             
             //ClassLoader classLoader = Reporte.class.getClassLoader();
             //URL url= classLoader.getResource ("doc/grafica1.png");

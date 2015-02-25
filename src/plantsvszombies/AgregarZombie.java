@@ -24,12 +24,14 @@ public class AgregarZombie extends javax.swing.JFrame {
         lImagen = new javax.swing.JLabel();
         bAgregar = new javax.swing.JButton();
         etNombre = new javax.swing.JTextField();
+        etsAtaque = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Nombre:");
 
-        jLabel2.setText("Ataque:");
+        jLabel2.setText("Defensa:");
 
         bAgregar.setText("Agregar");
         bAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -44,6 +46,8 @@ public class AgregarZombie extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Ataque:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -52,7 +56,14 @@ public class AgregarZombie extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(lImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(31, 31, 31)
+                        .addComponent(etsAtaque, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(bAgregar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -60,11 +71,8 @@ public class AgregarZombie extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(etAtaque, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                            .addComponent(etNombre)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(bAgregar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(etNombre))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,6 +88,10 @@ public class AgregarZombie extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(etAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etsAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addComponent(bAgregar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -91,11 +103,12 @@ public class AgregarZombie extends javax.swing.JFrame {
     private void bAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarActionPerformed
         String nombre = etNombre.getText();
         String ataque = etAtaque.getText();
+        String sataque = etsAtaque.getText();
         
-        if (!nombre.equals("") && !ataque.equals("") && validarNumero(ataque)) {
+        if (!nombre.equals("") && !ataque.equals("") && !sataque.equals("") && validarNumero(ataque)) {
             if (JugadorZombie.cantidadZombies > 0) {
                 Lista<Zombie> listaZombie = new Lista();
-                listaZombie.agregar(new Zombie(lImagen.getIcon(), nombre, Integer.parseInt(ataque)));
+                listaZombie.agregar(new Zombie(lImagen.getIcon(), nombre, Integer.parseInt(ataque),Integer.parseInt(sataque)));
                 listaZombie.imprimir();
                 JugadorZombie.cantidadZombies -= 1;
             } else {
@@ -161,8 +174,10 @@ public class AgregarZombie extends javax.swing.JFrame {
     private javax.swing.JButton bAgregar;
     private javax.swing.JTextField etAtaque;
     private javax.swing.JTextField etNombre;
+    private javax.swing.JTextField etsAtaque;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lImagen;
     // End of variables declaration//GEN-END:variables
 }

@@ -36,8 +36,11 @@ public class Jugador extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jmZombies = new javax.swing.JMenuItem();
         jmPlantas = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        Reportes = new javax.swing.JMenu();
         jmUsuarios = new javax.swing.JMenuItem();
+        jmRPlantas = new javax.swing.JMenuItem();
+        jmRZombies = new javax.swing.JMenuItem();
+        jmRTablero = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jmManual_usuario = new javax.swing.JMenuItem();
         jmManual_tecnico = new javax.swing.JMenuItem();
@@ -94,17 +97,41 @@ public class Jugador extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu3.setText("Reportes");
+        Reportes.setText("Reportes");
 
-        jmUsuarios.setText("Usuarios");
+        jmUsuarios.setText("Jugadores");
         jmUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmUsuariosActionPerformed(evt);
             }
         });
-        jMenu3.add(jmUsuarios);
+        Reportes.add(jmUsuarios);
 
-        jMenuBar1.add(jMenu3);
+        jmRPlantas.setText("Plantas");
+        jmRPlantas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmRPlantasActionPerformed(evt);
+            }
+        });
+        Reportes.add(jmRPlantas);
+
+        jmRZombies.setText("Zombies");
+        jmRZombies.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmRZombiesActionPerformed(evt);
+            }
+        });
+        Reportes.add(jmRZombies);
+
+        jmRTablero.setText("Tablero");
+        jmRTablero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmRTableroActionPerformed(evt);
+            }
+        });
+        Reportes.add(jmRTablero);
+
+        jMenuBar1.add(Reportes);
 
         jMenu2.setText("Ayuda");
 
@@ -267,7 +294,7 @@ public class Jugador extends javax.swing.JFrame {
     private void jmUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmUsuariosActionPerformed
         Reporte irReporte = new Reporte();
         irReporte.generaTxt();
-        irReporte.generaGrafica();
+        irReporte.generaGrafica("\\src\\doc\\texto1.txt","\\src\\doc\\grafica1.png");
     }//GEN-LAST:event_jmUsuariosActionPerformed
 
     private void jmPlantasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPlantasActionPerformed
@@ -281,6 +308,22 @@ public class Jugador extends javax.swing.JFrame {
         irListaZombies.setLocationRelativeTo(null);
         irListaZombies.setVisible(true);
     }//GEN-LAST:event_jmZombiesActionPerformed
+
+    private void jmRPlantasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmRPlantasActionPerformed
+        Reporte irReporte = new Reporte();
+        irReporte.generaTxt2();
+        irReporte.generaGrafica("\\src\\doc\\texto2.txt","\\src\\doc\\grafica2.png");
+    }//GEN-LAST:event_jmRPlantasActionPerformed
+
+    private void jmRZombiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmRZombiesActionPerformed
+        Reporte irReporte = new Reporte();
+        irReporte.generaTxt3();
+        irReporte.generaGrafica("\\src\\doc\\texto3.txt","\\src\\doc\\grafica3.png");
+    }//GEN-LAST:event_jmRZombiesActionPerformed
+
+    private void jmRTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmRTableroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmRTableroActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -315,16 +358,19 @@ public class Jugador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Reportes;
     private javax.swing.JLabel jJuego;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jmAcerca_de;
     private javax.swing.JMenuItem jmManual_tecnico;
     private javax.swing.JMenuItem jmManual_usuario;
     private javax.swing.JMenuItem jmPlantas;
+    private javax.swing.JMenuItem jmRPlantas;
+    private javax.swing.JMenuItem jmRTablero;
+    private javax.swing.JMenuItem jmRZombies;
     private javax.swing.JMenuItem jmSalir;
     private javax.swing.JMenuItem jmUsuarios;
     private javax.swing.JMenuItem jmZombies;

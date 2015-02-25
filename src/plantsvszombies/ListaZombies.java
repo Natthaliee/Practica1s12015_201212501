@@ -44,6 +44,7 @@ public class ListaZombies extends JFrame{
             crearLabel(panelFilas,  new JLabel(), Zombie.aZImagen.get(i));
             crearLabel(panelFilas,new JLabel(), Zombie.aZNombre.get(i));
             crearLabel(panelFilas,new JLabel(), Zombie.aZAtaque.get(i));
+            crearLabel2(panelFilas,new JLabel(), Zombie.asZAtaque.get(i));
         }
     }
     
@@ -63,5 +64,11 @@ public class ListaZombies extends JFrame{
         label.setBounds(450, 0, 60, 100);
         panelFilas.add(label);
         label.setText(String.valueOf(ataque));
+    }
+    
+    private void crearLabel2(JPanel panelFilas, JLabel label, int sataque) {
+        label.setBounds(650, 0, 60, 100);
+        panelFilas.add(label);
+        label.setText(String.valueOf(sataque));
     }
 }

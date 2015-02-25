@@ -45,6 +45,7 @@ public class ListaPlantas extends JFrame{
             crearLabel(panelFilas,  new JLabel(), Planta.aImagen.get(i));
             crearLabel(panelFilas,new JLabel(), Planta.aNombre.get(i));
             crearLabel(panelFilas,new JLabel(), Planta.aAtaque.get(i));
+            crearLabel2(panelFilas,new JLabel(), Planta.asAtaque.get(i));
         }
         
        
@@ -66,6 +67,11 @@ public class ListaPlantas extends JFrame{
         label.setBounds(450, 0, 60, 100);
         panelFilas.add(label);
         label.setText(String.valueOf(ataque));
+    }
+    private void crearLabel2(JPanel panelFilas, JLabel label, String sAtaque) {
+        label.setBounds(650, 0, 60, 100);
+        panelFilas.add(label);
+        label.setText(sAtaque);
     }
 }
     //static JScrollPane panel = new JScrollPane(null);
