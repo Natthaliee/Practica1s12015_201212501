@@ -1,0 +1,1 @@
+digraph g{ graph[rankdir=LR];node[fontsize = 16 shape = ellipse];edge[];node0[label=Jugadores shape = record];node1[ label = "Planta|n|3"shape=record];node0 -> node1;  node2[label = "Zombie|t|5"shape=record];node0 -> node2; node3[label = "Otros Campos|a|a"shape=record];node1 -> node3; node4[label = "Otros Campos|5"shape=record];node2 -> node4;}
