@@ -137,8 +137,8 @@ public class Reporte {
             vaciarFichero(fichero);
             texto = "";
             BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
-
-            texto += "digraph estructura{ node[fontsize = 16 shape = ellipse shape= record];a[label=\"{";
+            texto += "digraph estructura{ node[shape= record];b[label=\"{";
+            
             
             for (int i = 0; i < Dimension.matriz.length; i++) {
                 texto += "{" ;
@@ -149,7 +149,12 @@ public class Reporte {
                         texto += "|"+Dimension.matriz[i][j];
                     }
                 }
-                texto+="}";
+                if (i <= Dimension.matriz.length) {
+                    texto+="}";
+                }else{
+                    texto+="}|";
+                }
+                
             }
             
             texto +=  "}\"];}";
