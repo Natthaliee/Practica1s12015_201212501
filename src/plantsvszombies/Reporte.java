@@ -1,12 +1,15 @@
 package plantsvszombies;
 
+import java.awt.Desktop;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -68,7 +71,7 @@ public class Reporte {
         }
 
     }
-    
+
     public void generaTxt2() {
         try {
             fichero = dir + "\\src\\doc\\texto2.txt";
@@ -80,12 +83,12 @@ public class Reporte {
             BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
 
             texto += "digraph g{ graph[rankdir=LR];node[fontsize = 16 shape = ellipse];edge[];node0[label=Plantas shape = record];";
-            if (Planta.aNombre.size()>0 && Planta.aAtaque.size()>0&& Planta.asAtaque.size()>0) {
+            if (Planta.aNombre.size() > 0 && Planta.aAtaque.size() > 0 && Planta.asAtaque.size() > 0) {
                 for (int i = 0; i < Planta.aNombre.size(); i++) {
-                    texto += "node"+(i+1)+"[ label = \"Planta"+(i+1)+"|" + Planta.aNombre.get(i) + "|" + Planta.aAtaque.get(i) + "|" + Planta.asAtaque.get(i) + "\"shape=record];";
-                    texto += "node0 -> node"+(i+1)+";  ";
+                    texto += "node" + (i + 1) + "[ label = \"Planta" + (i + 1) + "|" + Planta.aNombre.get(i) + "|" + Planta.aAtaque.get(i) + "|" + Planta.asAtaque.get(i) + "\"shape=record];";
+                    texto += "node0 -> node" + (i + 1) + ";  ";
                 }
-            } 
+            }
 
             texto += "}";
 
@@ -107,15 +110,15 @@ public class Reporte {
             vaciarFichero(fichero);
             texto = "";
 
-           BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
 
-            texto += "digraph g{ graph[rankdir=LR];node[fontsize = 16 shape = ellipse];edge[];node0[label=Plantas shape = record];";
-            if (Zombie.aZNombre.size()>0 && Zombie.aZAtaque.size()>0&& Zombie.asZAtaque.size()>0) {
+            texto += "digraph g{ graph[rankdir=LR];node[fontsize = 16 shape = ellipse];edge[];node0[label=Zombies shape = record];";
+            if (Zombie.aZNombre.size() > 0 && Zombie.aZAtaque.size() > 0 && Zombie.asZAtaque.size() > 0) {
                 for (int i = 0; i < Zombie.aZNombre.size(); i++) {
-                    texto += "node"+(i+1)+"[ label = \"Planta"+(i+1)+"|" + Zombie.aZNombre.get(i) + "|" + Zombie.aZAtaque.get(i) + "|" + Zombie.asZAtaque.get(i) + "\"shape=record];";
-                    texto += "node0 -> node"+(i+1)+";  ";
+                    texto += "node" + (i + 1) + "[ label = \"Zombie" + (i + 1) + "|" + Zombie.aZNombre.get(i) + "|" + Zombie.aZAtaque.get(i) + "|" + Zombie.asZAtaque.get(i) + "\"shape=record];";
+                    texto += "node0 -> node" + (i + 1) + ";  ";
                 }
-            } 
+            }
 
             texto += "}";
 
@@ -128,7 +131,7 @@ public class Reporte {
         }
 
     }
-    
+
     public void generaGrafica(String txt, String nombre) {
         try {
             String dotPath = "c:\\Program Files\\Graphviz2.38\\bin\\dot.exe";
@@ -147,9 +150,18 @@ public class Reporte {
             Runtime rt = Runtime.getRuntime();
 
             rt.exec(cmd);
-            
+
             Runtime.getRuntime().exec("cmd /c start " + dir + nombre);
-            
+           /* try {
+                ClassLoader classLoader = Reporte.class.getClassLoader();
+                URL url = classLoader.getResource("/doc/grafica1.png");
+                ImageIcon imagen = new ImageIcon (url);
+                File path = new File(url.getPath());
+                Desktop.getDesktop().open(path);
+            } catch (IOException ex) {
+                System.out.println("Problema abriendo el pdf de erfc");
+            }*/
+
             //ClassLoader classLoader = Reporte.class.getClassLoader();
             //URL url= classLoader.getResource ("doc/grafica1.png");
             //ImageIcon imagen = new ImageIcon (url);
@@ -157,7 +169,6 @@ public class Reporte {
             //File miDocu = new File (getClass().getResource("doc/grafica1.png").toString());
             //----Desktop.getDesktop().open(url);  
             //Runtime.getRuntime().exec("cmd /c start " + dir + "\\src\\doc\\grafica1.png");
-            
             //URL urlImagen = this.getClass().getResource("doc/grafica1.png");
             //Image grafica = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("doc/grafica1.png"));
         } catch (Exception ex) {

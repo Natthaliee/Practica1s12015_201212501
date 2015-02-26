@@ -14,7 +14,7 @@ public class Cola {
     int nPlantas = Planta.aImagen.size();
     Icon imagen = Planta.aImagen.get(0);
     Stack< Integer> sPlantas = new Stack< Integer>();
-    static LinkedList<Icon> cola = new LinkedList();
+    static LinkedList<Icon> cola = new LinkedList<>();
 
     public Cola() {
 
@@ -26,10 +26,6 @@ public class Cola {
             sPlantas.push(pos);
             cola.offer(Planta.aImagen.get(pos));//agrega a cola
         }
-       /* while(cola.peek() != null){
-            System.out.println(cola.poll());
-        }*/
-        
         //System.out.println(sPlantas.toString());
     }
     

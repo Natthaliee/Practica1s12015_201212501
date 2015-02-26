@@ -49,7 +49,7 @@ public class Jugador extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 102));
 
-        jJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Zombies/logo.png"))); // NOI18N
+        jJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/otros/logo.png"))); // NOI18N
         jJuego.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jJuegoMouseClicked(evt);
@@ -230,6 +230,13 @@ public class Jugador extends javax.swing.JFrame {
          } catch (IOException e) {
          System.out.println(e);
          }*/
+        
+         /*try {
+            File path = new File(getClass().getResource("/doc/ManualUsuario.pdf").getFile());
+            Desktop.getDesktop().open(path);
+        } catch (IOException ex) {
+            System.out.println("Problema abriendo el pdf de erfc");
+        }*/
 
         try {
             File directorio = new File("temp");

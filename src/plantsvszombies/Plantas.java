@@ -1,6 +1,8 @@
 package plantsvszombies;
 
+import java.awt.Color;
 import javax.swing.Icon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,13 +17,11 @@ public class Plantas extends javax.swing.JFrame {
     static Icon plantaCinco;
 
     public Plantas() {
+        getContentPane().setBackground(Color.darkGray);
         initComponents();
-        if (AgregarPlanta.empiezaJuegoPlantas == 1) {
-            Zombies irZombies = new Zombies();
-            irZombies.setLocationRelativeTo(null);
-            irZombies.setVisible(true);
-            this.setVisible(false);
-        }
+        
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -33,7 +33,7 @@ public class Plantas extends javax.swing.JFrame {
         planta3 = new javax.swing.JLabel();
         planta4 = new javax.swing.JLabel();
         planta5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        bZombies = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,10 +72,10 @@ public class Plantas extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Inicio");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bZombies.setText("Zombies");
+        bZombies.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bZombiesActionPerformed(evt);
             }
         });
 
@@ -95,10 +95,10 @@ public class Plantas extends javax.swing.JFrame {
                     .addComponent(planta1)
                     .addComponent(planta5))
                 .addGap(26, 26, 26))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bZombies)
+                .addGap(110, 110, 110))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +119,7 @@ public class Plantas extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(planta4)
                 .addGap(42, 42, 42)
-                .addComponent(jButton1))
+                .addComponent(bZombies))
         );
 
         pack();
@@ -165,12 +165,16 @@ public class Plantas extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_planta1MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Jugador jug = new Jugador();
-        jug.setLocationRelativeTo(null);
-        jug.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bZombiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bZombiesActionPerformed
+        if (AgregarPlanta.empiezaJuegoPlantas == 1) {
+            Zombies irZombies = new Zombies();
+            irZombies.setLocationRelativeTo(null);
+            irZombies.setVisible(true);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "Agregar todas las plantas");
+        }
+    }//GEN-LAST:event_bZombiesActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -206,7 +210,7 @@ public class Plantas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bZombies;
     private javax.swing.JLabel planta1;
     private javax.swing.JLabel planta2;
     private javax.swing.JLabel planta3;

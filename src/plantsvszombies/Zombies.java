@@ -1,6 +1,8 @@
 package plantsvszombies;
 
+import java.awt.Color;
 import javax.swing.Icon;
+import javax.swing.JOptionPane;
 import static plantsvszombies.AgregarZombie.empiezaJuego;
 
 /**
@@ -17,14 +19,10 @@ public class Zombies extends javax.swing.JFrame {
     static Icon zombieSeis;
 
     public Zombies() {
+        getContentPane().setBackground(Color.darkGray);
         initComponents();
-
-        if (empiezaJuego == 1) {
-            Jugador irJugador = new Jugador();
-            irJugador.setLocationRelativeTo(null);
-            irJugador.setVisible(true);
-            this.setVisible(false);
-        }
+        
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
     }
 
@@ -37,8 +35,8 @@ public class Zombies extends javax.swing.JFrame {
         zombie4 = new javax.swing.JLabel();
         zombie2 = new javax.swing.JLabel();
         zombie5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         zombie3 = new javax.swing.JLabel();
+        bListo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,17 +75,17 @@ public class Zombies extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Inicio");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         zombie3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Zombies/3.png"))); // NOI18N
         zombie3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 zombie3MouseClicked(evt);
+            }
+        });
+
+        bListo.setText("Listo!");
+        bListo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListoActionPerformed(evt);
             }
         });
 
@@ -97,22 +95,23 @@ public class Zombies extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(zombie4)
-                    .addComponent(zombie1))
-                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(zombie2)
-                    .addComponent(zombie5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(zombie4)
+                            .addComponent(zombie1))
+                        .addGap(70, 70, 70)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(zombie2)
+                            .addComponent(zombie5)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(bListo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(zombie3)
                     .addComponent(zombie6))
                 .addGap(47, 47, 47))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,9 +129,8 @@ public class Zombies extends javax.swing.JFrame {
                     .addComponent(zombie4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(zombie5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(zombie6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bListo))
         );
 
         pack();
@@ -178,13 +176,6 @@ public class Zombies extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_zombie5MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Jugador jug = new Jugador();
-        jug.setLocationRelativeTo(null);
-        jug.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void zombie3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_zombie3MouseClicked
         zombieTres = zombie3.getIcon();
         AgregarZombie agr = new AgregarZombie();
@@ -192,6 +183,17 @@ public class Zombies extends javax.swing.JFrame {
         agr.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_zombie3MouseClicked
+
+    private void bListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bListoActionPerformed
+        if (empiezaJuego == 1) {
+            Jugador irJugador = new Jugador();
+            irJugador.setLocationRelativeTo(null);
+            irJugador.setVisible(true);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "Agregar todos los zombies");
+        }
+    }//GEN-LAST:event_bListoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -226,7 +228,7 @@ public class Zombies extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bListo;
     private javax.swing.JLabel zombie1;
     private javax.swing.JLabel zombie2;
     private javax.swing.JLabel zombie3;

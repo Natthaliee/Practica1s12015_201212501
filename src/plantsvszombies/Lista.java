@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Lista <T>{
     private Nodo inicio;
-    public static ArrayList<Planta> aPlanta = new ArrayList<>();
+    //public static ArrayList<Planta> aPlanta = new ArrayList<>();
 
     public Lista() {
         inicio = null;
@@ -34,7 +34,7 @@ public class Lista <T>{
     
     public void imprimir(){
         for(Nodo aux = inicio; aux!=null; aux = aux.obtenerSig()){
-            aPlanta.add((Planta) aux.obtenerObjeto());
+            //aPlanta.add((Planta) aux.obtenerObjeto());
             
             /*Iterator<Planta> it = aPlanta.iterator();
                 while (it.hasNext()) {

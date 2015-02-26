@@ -1,5 +1,6 @@
 package plantsvszombies;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,6 +18,7 @@ public class JugadorPlanta extends javax.swing.JFrame {
     static int contJugadorPlanta = 0;
 
     public JugadorPlanta() {
+        getContentPane().setBackground(Color.YELLOW);
         initComponents();
     }
 
@@ -29,9 +31,9 @@ public class JugadorPlanta extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         etCantidad = new javax.swing.JTextField();
-        panel = new javax.swing.JPanel();
-        bRegresar = new javax.swing.JButton();
         bAgregar = new javax.swing.JButton();
+        bRegresar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,13 +43,6 @@ public class JugadorPlanta extends javax.swing.JFrame {
 
         jLabel3.setText("Cantidad:");
 
-        bRegresar.setText("Regresar");
-        bRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bRegresarActionPerformed(evt);
-            }
-        });
-
         bAgregar.setText("Agregar campos");
         bAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,26 +50,14 @@ public class JugadorPlanta extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bAgregar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bRegresar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        bRegresar.setText("Regresar");
+        bRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRegresarActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/otros/minilogo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,29 +75,45 @@ public class JugadorPlanta extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(etNombre))
-                            .addComponent(panel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(etNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel1)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(etCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bRegresar)
+                        .addGap(31, 31, 31))))
         );
 
         pack();
@@ -124,7 +123,7 @@ public class JugadorPlanta extends javax.swing.JFrame {
         String nombre = etNombre.getText();
         String cantidad = etCantidad.getText();
 
-        if (validarNumero(cantidad)) {
+        if (validarNumero(cantidad) && Integer.parseInt(cantidad) > 0) {
             if (nombre.equals("") || cantidad.equals("")) {
                 JOptionPane.showMessageDialog(null, "Llene lo campos de nombre y cantidad");
             } else {
@@ -136,21 +135,20 @@ public class JugadorPlanta extends javax.swing.JFrame {
                     aJugadorPlanta.add(0, nombre);
                     aJugadorPlanta.add(1, cantidad);
                 }
-                
+
                 cantidadPlantas = Integer.parseInt(cantidad);
                 contJugadorPlanta = 1;
 
                 String nuevoCampo = JOptionPane.showInputDialog("Inserte texto: ");
-                
+
                 if (nuevoCampo != null) {
                     aJugadorPlanta.add(nuevoCampo);
-                } 
+                }
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida");
             etCantidad.setText("");
         }
-
     }//GEN-LAST:event_bAgregarActionPerformed
 
     private void bRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegresarActionPerformed
@@ -210,6 +208,6 @@ public class JugadorPlanta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel panel;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

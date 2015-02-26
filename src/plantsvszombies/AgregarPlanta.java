@@ -1,5 +1,6 @@
 package plantsvszombies;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -7,10 +8,11 @@ import javax.swing.JOptionPane;
  * @author Samsung
  */
 public class AgregarPlanta extends javax.swing.JFrame {
-    
+
     static int empiezaJuegoPlantas = 0;
 
     public AgregarPlanta() {
+        getContentPane().setBackground(Color.YELLOW);
         initComponents();
         if (Plantas.plantaUno != null) {
             lImagen.setIcon(Plantas.plantaUno);
@@ -28,9 +30,6 @@ public class AgregarPlanta extends javax.swing.JFrame {
             lImagen.setIcon(Plantas.plantaCinco);
             Plantas.plantaCinco = null;
         }
-        
-        
-       
 
     }
 
@@ -46,6 +45,8 @@ public class AgregarPlanta extends javax.swing.JFrame {
         lImagen = new javax.swing.JLabel();
         etsAtaque = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        bRegresar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +69,15 @@ public class AgregarPlanta extends javax.swing.JFrame {
 
         jLabel3.setText("Ataque:");
 
+        bRegresar.setText("Regresar");
+        bRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRegresarActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/otros/minilogo.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,10 +86,6 @@ public class AgregarPlanta extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(bAgregar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -96,7 +102,15 @@ public class AgregarPlanta extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(etAtaque, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                                     .addComponent(etNombre))))
-                        .addGap(87, 87, 87))))
+                        .addGap(87, 87, 87))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bRegresar)
+                            .addComponent(bAgregar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(19, 19, 19))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,8 +133,14 @@ public class AgregarPlanta extends javax.swing.JFrame {
                             .addComponent(etsAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                        .addComponent(bAgregar)
-                        .addGap(28, 28, 28))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(bAgregar)
+                                .addGap(5, 5, 5)
+                                .addComponent(bRegresar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addContainerGap())))))
         );
 
         pack();
@@ -134,27 +154,30 @@ public class AgregarPlanta extends javax.swing.JFrame {
         String nombre = etNombre.getText();
         String ataque = etAtaque.getText();
         String sAtaque = etsAtaque.getText();
-        
-        if (!nombre.equals("") && !ataque.equals("") && !sAtaque.equals("") && validarNumero(ataque)) {
-            
-            if (JugadorPlanta.cantidadPlantas > 0) {
+
+        if (JugadorPlanta.cantidadPlantas > 0) {
+            if (!nombre.equals("") && !ataque.equals("") && !sAtaque.equals("") && validarNumero(ataque)) {
                 Lista<Planta> listaPlanta = new Lista();
-                listaPlanta.agregar(new Planta(lImagen.getIcon(), nombre, Integer.parseInt(ataque),sAtaque));
+                listaPlanta.agregar(new Planta(lImagen.getIcon(), nombre, Integer.parseInt(ataque), sAtaque));
                 listaPlanta.imprimir();
                 JugadorPlanta.cantidadPlantas -= 1;
-            }else{
-                JOptionPane.showMessageDialog(null, "No tiene plantas disponibles");
-                empiezaJuegoPlantas = 1;
+            } else {
+                JOptionPane.showMessageDialog(null, "Llene los campos correctamente");
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "Llene los campos correctamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "No tiene plantas disponibles");
+            empiezaJuegoPlantas = 1;
         }
-            
+
+        
+    }//GEN-LAST:event_bAgregarActionPerformed
+
+    private void bRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegresarActionPerformed
         Plantas pl = new Plantas();
         pl.setLocationRelativeTo(null);
         pl.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_bAgregarActionPerformed
+    }//GEN-LAST:event_bRegresarActionPerformed
 
     private static boolean validarNumero(String cadena) {
         try {
@@ -200,12 +223,14 @@ public class AgregarPlanta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAgregar;
+    private javax.swing.JButton bRegresar;
     private javax.swing.JTextField etAtaque;
     private javax.swing.JTextField etNombre;
     private javax.swing.JTextField etsAtaque;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lImagen;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,6 @@
 package plantsvszombies;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -15,6 +16,7 @@ public class JugadorZombie extends javax.swing.JFrame {
     static int cantidadZombies = 0;
 
     public JugadorZombie() {
+        getContentPane().setBackground(Color.YELLOW);
         initComponents();
     }
 
@@ -27,23 +29,22 @@ public class JugadorZombie extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel5 = new javax.swing.JPanel();
-        bRegresar5 = new javax.swing.JButton();
-        bAgregar5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         etNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         etCantidad = new javax.swing.JTextField();
+        bAgregar5 = new javax.swing.JButton();
+        bRegresar5 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        bRegresar5.setText("Regresar");
-        bRegresar5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bRegresar5ActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Jugador Zombie");
+
+        jLabel2.setText("Nombre: ");
+
+        jLabel3.setText("Cantidad:");
 
         bAgregar5.setText("Agregar campos");
         bAgregar5.addActionListener(new java.awt.event.ActionListener() {
@@ -52,71 +53,66 @@ public class JugadorZombie extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panel5Layout = new javax.swing.GroupLayout(panel5);
-        panel5.setLayout(panel5Layout);
-        panel5Layout.setHorizontalGroup(
-            panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel5Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addGroup(panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bAgregar5, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bRegresar5, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
-        );
-        panel5Layout.setVerticalGroup(
-            panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bAgregar5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bRegresar5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        bRegresar5.setText("Regresar");
+        bRegresar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRegresar5ActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("Jugador Zombie");
-
-        jLabel2.setText("Nombre: ");
-
-        jLabel3.setText("Cantidad:");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/otros/minilogo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(etCantidad))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(etNombre))
-                        .addComponent(panel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(etCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(etNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(25, 25, 25))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel1)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addGap(99, 99, 99)
+                        .addComponent(jLabel1)
+                        .addGap(92, 92, 92))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bRegresar5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bAgregar5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addGap(4, 4, 4))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(etCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(etCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(bAgregar5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bRegresar5)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -140,7 +136,7 @@ public class JugadorZombie extends javax.swing.JFrame {
         String nombre = etNombre.getText();
         String cantidad = etCantidad.getText();
 
-        if (validarNumero(cantidad)) {
+        if (validarNumero(cantidad) && Integer.parseInt(cantidad)>0) {
 
             if (nombre.equals("") || cantidad.equals("")) {
                 JOptionPane.showMessageDialog(null, "Llene lo campos de nombre y cantidad");
@@ -208,28 +204,13 @@ public class JugadorZombie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bAgregar;
-    private javax.swing.JButton bAgregar1;
-    private javax.swing.JButton bAgregar2;
-    private javax.swing.JButton bAgregar3;
-    private javax.swing.JButton bAgregar4;
     private javax.swing.JButton bAgregar5;
-    private javax.swing.JButton bRegresar;
-    private javax.swing.JButton bRegresar1;
-    private javax.swing.JButton bRegresar2;
-    private javax.swing.JButton bRegresar3;
-    private javax.swing.JButton bRegresar4;
     private javax.swing.JButton bRegresar5;
     private javax.swing.JTextField etCantidad;
     private javax.swing.JTextField etNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel panel;
-    private javax.swing.JPanel panel1;
-    private javax.swing.JPanel panel2;
-    private javax.swing.JPanel panel3;
-    private javax.swing.JPanel panel4;
-    private javax.swing.JPanel panel5;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
