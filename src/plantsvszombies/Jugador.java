@@ -329,7 +329,9 @@ public class Jugador extends javax.swing.JFrame {
     }//GEN-LAST:event_jmRZombiesActionPerformed
 
     private void jmRTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmRTableroActionPerformed
-        // TODO add your handling code here:
+        Reporte irReporte = new Reporte();
+        irReporte.generaTxt4();
+        irReporte.generaGrafica("\\src\\doc\\texto4.txt","\\src\\doc\\grafica4.png");
     }//GEN-LAST:event_jmRTableroActionPerformed
 
     public static void main(String args[]) {

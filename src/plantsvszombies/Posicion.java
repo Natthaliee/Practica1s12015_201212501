@@ -6,15 +6,14 @@ import javax.swing.JOptionPane;
  *
  * @author Samsung
  */
-public class Dimension extends javax.swing.JFrame {
-    
-    static int varN;
-    static int varM;
-    
-    static String matriz[][] = new String[6][12];
+public class Posicion extends javax.swing.JFrame {
 
+    int x;
+    int y;
+    int conteoPlantas = Planta.aNombre.size();
+    int conteoZombies = Zombie.aZNombre.size();
 
-    public Dimension() {
+    public Posicion() {
         initComponents();
     }
 
@@ -22,60 +21,56 @@ public class Dimension extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bAceptar7 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         etN = new javax.swing.JTextField();
         etM = new javax.swing.JTextField();
-        bAceptar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        bAceptar7.setText("Aceptar");
+        bAceptar7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptar7ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Posición Tablero");
+
+        jLabel4.setText("(n*m)");
 
         jLabel1.setText("n =");
 
         jLabel2.setText("m =");
-
-        etN.setText("6");
-
-        etM.setText("12");
-
-        bAceptar.setText("Aceptar");
-        bAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAceptarActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Ingrese Dimensiones del Tablero");
-
-        jLabel4.setText("(n*m)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel4)))
+                .addGap(75, 75, 75)
+                .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bAceptar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(etN))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(etM, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bAceptar7, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(etN))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(etM, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(4, 4, 4)))
                 .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
@@ -94,35 +89,55 @@ public class Dimension extends javax.swing.JFrame {
                     .addComponent(etM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(bAceptar)
+                .addComponent(bAceptar7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+    private void bAceptar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptar7ActionPerformed
         String n = etN.getText();
         String m = etM.getText();
-        
-        if (validarNumero(n) && validarNumero(m) && Integer.parseInt(n)>0 && Integer.parseInt(m)>0) {
-            varN = Integer.parseInt(n);
-            varM = Integer.parseInt(m);
-            
-            Juego irJuego = new Juego();
-            irJuego.setLocationRelativeTo(null);
-            irJuego.setVisible(true);
-            this.setVisible(false);
-            
-            for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                matriz[i][j]="0";
+
+        if (validarNumero(n) && validarNumero(m) && Integer.parseInt(n) >= 0 && Integer.parseInt(m) >= 0) {
+            x = Integer.parseInt(n);
+            y = Integer.parseInt(m);
+
+            if (Juego.personaje == 1) {
+                if (conteoPlantas > 0) {
+                    Dimension.matriz[x][y] = "1";
+                    this.setVisible(false);
+                    conteoPlantas -= 1;
+                } else {
+                    JOptionPane.showMessageDialog(null, "ya no hay plantas");
+                }
+            } else if (Juego.personaje == 2) {
+                if (conteoZombies > 0) {
+                    Dimension.matriz[x][y] = "2";
+                    this.setVisible(false);
+                    conteoZombies -= 1;
+                } else {
+                    JOptionPane.showMessageDialog(null, "ya no hay zombies");
+                }
+
             }
-        }
+            
+            System.out.println(":o    "+Dimension.matriz[x][y]);
+
         } else {
             JOptionPane.showMessageDialog(null, "Ingrese dimensiones válidas");
         }
-    }//GEN-LAST:event_bAceptarActionPerformed
+    }//GEN-LAST:event_bAceptar7ActionPerformed
+
+    private static boolean validarNumero(String cadena) {
+        try {
+            Integer.parseInt(cadena);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -138,35 +153,27 @@ public class Dimension extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dimension.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Posicion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dimension.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Posicion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dimension.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Posicion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dimension.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Posicion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dimension().setVisible(true);
+                new Posicion().setVisible(true);
             }
         });
     }
-    
-    private static boolean validarNumero(String cadena) {
-        try {
-            Integer.parseInt(cadena);
-            return true;
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bAceptar;
+    private javax.swing.JButton bAceptar7;
     private javax.swing.JTextField etM;
     private javax.swing.JTextField etN;
     private javax.swing.JLabel jLabel1;

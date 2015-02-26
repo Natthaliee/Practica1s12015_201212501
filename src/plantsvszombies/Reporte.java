@@ -1,15 +1,12 @@
 package plantsvszombies;
 
-import java.awt.Desktop;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.image.ImageView;
 
 /**
  *
@@ -18,8 +15,8 @@ import javafx.scene.image.ImageView;
 public class Reporte {
 
     String dir = System.getProperty("user.dir");
-    String fichero;
-    String texto;
+    String fichero, texto;
+    
 
     public void generaTxt() {
         try {
@@ -122,6 +119,41 @@ public class Reporte {
 
             texto += "}";
 
+            writer.write(texto);
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            System.err.println(e);
+            System.exit(1);
+        }
+
+    }
+    
+     public void generaTxt4() {
+        try {
+            fichero = dir + "\\src\\doc\\texto4.txt";
+            File outFile = new File(fichero);
+
+            vaciarFichero(fichero);
+            texto = "";
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
+
+            texto += "digraph estructura{ node[fontsize = 16 shape = ellipse shape= record];a[label=\"{";
+            
+            for (int i = 0; i < Dimension.matriz.length; i++) {
+                texto += "{" ;
+                for (int j = 0; j < Dimension.matriz[i].length; j++) {
+                    if (j==0) {
+                        texto += Dimension.matriz[i][j];
+                    } else {
+                        texto += "|"+Dimension.matriz[i][j];
+                    }
+                }
+                texto+="}";
+            }
+            
+            texto +=  "}\"];}";
+            
             writer.write(texto);
             writer.newLine();
             writer.close();
