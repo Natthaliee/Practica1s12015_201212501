@@ -198,9 +198,9 @@ public class Jugador extends javax.swing.JFrame {
 
     private void jJuegoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jJuegoMouseClicked
         if ((AgregarZombie.empiezaJuego == 1) && (AgregarPlanta.empiezaJuegoPlantas == 1)) {
-            Juego irJuego = new Juego();
-            irJuego.setLocationRelativeTo(null);
-            irJuego.setVisible(true);
+            Dimension irDimension = new Dimension();
+            irDimension.setLocationRelativeTo(null);
+            irDimension.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "Agregue las plantas y zombies");
